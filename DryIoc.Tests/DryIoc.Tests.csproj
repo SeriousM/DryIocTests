@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AllPropertiesWithImportAttributeInjection.cs" />
+    <Compile Include="DisposeTests.cs" />
     <Compile Include="FactoryMethodForInterface.cs" />
     <Compile Include="ImportAttribute.cs" />
     <Compile Include="OverrideRegisteredService.cs" />
@@ -51,7 +52,7 @@
     <Compile Include="ResolveChildDepInChildContainerForParentService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DryIoc.dll">
+    <PackageReference Include="DryIoc">
       <Version>3.0.0-preview-11</Version>
     </PackageReference>
     <PackageReference Include="MSTest.TestAdapter">

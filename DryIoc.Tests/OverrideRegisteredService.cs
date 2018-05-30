@@ -6,6 +6,21 @@ namespace DryIoc.Tests
   public class OverrideRegisteredService
   {
     [TestMethod]
+    public void Test_WithContainerAndUseInstance()
+    {
+      IContainer container = new Container();
+      container.Register<A>();
+      container.Register<IDepOfA, DepOfA>();
+
+      var childContainer = container.With(rules => rules.WithFactorySelector(Rules.SelectLastRegisteredFactory()));
+      childContainer.UseInstance<IDepOfA>(new TestDepOfA());
+
+      var a = childContainer.Resolve<A>();
+      Assert.IsNotNull(a);
+      Assert.IsInstanceOfType(a.dep, typeof(TestDepOfA));
+    }
+
+    [TestMethod]
     public void Test_WithContainerAndDelegate()
     {
       var container = new Container();
